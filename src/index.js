@@ -8,6 +8,99 @@ import { useState, useEffect } from 'react';
 console.log("./src/index.js");
 
 // ------------------------------------
+// POST with fetch method 
+// & use React useEffect Hook
+// to get data full object from 
+// http://localhost:4000/author/login
+// 21may20 1709
+// -------------------------------------
+
+// function PostRequestHooks() {
+//   const [data, setData] = useState(null);
+
+//   useEffect(
+//     () => {
+//       // POST request using fetch inside useEffect React hook
+//       const requestOptions = {
+//         method: 'POST',
+//         headers: { 'Content-Type': 'application/json' },
+//         body: JSON.stringify({
+//           "username": "jackyjones2",
+//           "password": "jones67P2"
+//         })
+//       };
+
+//       fetch('http://localhost:4000/author/login', requestOptions)
+//       .then(response => response.json())
+//       .then(data => setData(data));
+
+//       // empty dependency array means this effect will only run once (like componentDidMount in classes)
+//     }, []
+//   );
+
+//   return (
+//     <div >
+//       <h5 >POST Request with React Hooks</h5>
+//       <div>
+//           Returned Id: {JSON.stringify(data)}
+//       </div>
+//     </div>
+//   );
+// }
+
+// ReactDOM.render(
+//   <PostRequestHooks />,
+//   document.getElementById('root')
+// )
+
+
+// & use React useEffect Hook
+// to get data full object from 
+// http://localhost:4000/
+// 27may20 1804
+// -------------------------------------
+
+function PostRequestHooks() {
+  const [data, setData] = useState(null);
+
+  useEffect(
+    () => {
+      // POST request using fetch inside useEffect React hook
+      const requestOptions = {
+        method: 'GET',
+        // headers: { 'Content-Type': 'application/json' },
+        // body: JSON.stringify({
+        //   "username": "jackyjones2",
+        //   "password": "jones67P2"
+        // })
+      };
+
+      fetch('http://localhost:4000', requestOptions)
+      .then(response => response.json())
+      .then(data => setData(data));
+
+      // empty dependency array means this effect will only run once (like componentDidMount in classes)
+    }, []
+  );
+
+  return (
+    <div >
+      <h5 >POST Request with React Hooks</h5>
+      <div>
+          Returned Id: {JSON.stringify(data)}
+      </div>
+    </div>
+  );
+}
+
+ReactDOM.render(
+  <PostRequestHooks />,
+  document.getElementById('root')
+)
+
+
+
+// ------------------------------------
 // EXAMPLE 4
 // Learning Hooks to React
 // useEffect hook function
